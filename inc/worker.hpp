@@ -95,7 +95,7 @@ namespace otus {
 
     void execPostCritical() override {
       std::ofstream file { generateFileName(), std::ios_base::app };
-      file << buf;
+      file << buf; // FIXME It seems not thread safe and fires garbage sometimes
       file.close();
     }
 
