@@ -91,10 +91,7 @@ namespace otus {
     std::string buf { };
     static inline std::atomic_uint index { 1 };
 
-    void execCritical() override {
-      buf = queue.front().first;
-      commandsCounter += queue.front().second;
-    }
+    void execCritical() override { buf = queue.front().first; }
 
     void execPostCritical() override {
       std::ofstream file { generateFileName(), std::ios_base::app };
