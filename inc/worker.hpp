@@ -89,7 +89,7 @@ namespace otus {
     using Worker::Worker;
 
     std::string buf { };
-    static inline std::atomic_uint index { 1 };
+    static inline std::atomic_uint index { };
 
     void execCritical() override { buf = queue.front().first; }
 
@@ -109,9 +109,8 @@ namespace otus {
         << "bulk"
         << std::to_string(now)
         << '-'
-        << std::setfill('0') << std::setw(5) << std::to_string(index)
+        << std::setfill('0') << std::setw(5) << std::to_string(++index)
         << ".log";
-      ++index;
       return path.str();
     }
   };
